@@ -1,0 +1,387 @@
+---
+import categorias from "../data/categorias.json";
+import laboratorios from "../data/laboratorios.json";
+import productos from "../data/productos.json";
+import "../styles/global.css";
+
+const siteUrl = "https://tiendasecreta.comm/";
+const title = "tiendasecreta | Bebidas, productos naturales y suplementos";
+const description =
+  "Descubre tiendasecreta, una marca comercial con bebidas, productos naturales y suplementos de diferentes fabricantes. Explora el catálogo y consulta las presentaciones disponibles.";
+
+const ogImage = `${siteUrl}images/og-tiendasecreta.jpg`;
+const instagram = "https://www.instagram.com/tiendasecretaco/";
+
+const productosVisibles = productos.filter(
+  (producto) => producto.publicar !== false
+);
+
+const categoriasVisibles = categorias;
+
+const laboratoriosVisibles = laboratorios;
+
+const formatoPrecio = (precio) =>
+  new Intl.NumberFormat("es-CO", {
+    style: "currency",
+    currency: "COP",
+    maximumFractionDigits: 0,
+  }).format(precio ?? 0);
+
+const nombreLaboratorio = (slug) =>
+  laboratorios.find((laboratorio) => laboratorio.slug === slug)?.nombre ??
+  "Fabricante por confirmar";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": `${siteUrl}#organization`,
+      name: "tiendasecreta",
+      url: siteUrl,
+      logo: `${siteUrl}icons/tiendasecreta-192.png`,
+      email: "ventas@tiendasecreta.comm",
+      sameAs: [instagram],
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${siteUrl}#website`,
+      url: siteUrl,
+      name: "tiendasecreta",
+      description,
+      inLanguage: "es-CO",
+      publisher: { "@id": `${siteUrl}#organization` },
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta name="color-scheme" content="dark" />
+
+    <link rel="canonical" href={siteUrl} />
+    <link rel="alternate" hreflang="es-CO" href={siteUrl} />
+    <link rel="alternate" hreflang="x-default" href={siteUrl} />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/png" href="/icons/tiendasecreta-192.png" />
+    <link rel="apple-touch-icon" href="/icons/tiendasecreta-192.png" />
+
+    <!-- Open Graph -->
+    <meta property="og:site_name" content="tiendasecreta" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta
+  property="og:image:alt"
+  content="tiendasecreta, marca comercial de productos naturales, suplementos y bebidas"
+/>
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@tiendasecretaco" />
+    <meta name="twitter:creator" content="@tiendasecretaco" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta
+  name="twitter:image:alt"
+  content="tiendasecreta, marca comercial de productos naturales, suplementos y bebidas"
+/>
+
+    <!-- Datos estructurados -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Fuentes: preconnect + display=swap (evita bloquear el render con @import) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      as="image"
+      href="/images/envase-tiendasecreta-25ml.webp"
+      type="image/webp"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:wght@500;600&display=swap"
+    />
+  </head>
+
+<body>
+  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+
+  <header class="navbar">
+    <button id="install-pwa" class="install-button" hidden>
+      Instalar tiendasecreta
+    </button>
+
+    <a href="/" class="logo" aria-label="tiendasecreta, inicio">tiendasecreta</a>
+
+    <nav aria-label="Principal">
+      <a href="#categorias">Categorías</a>
+      <a href="#catalogo">Catálogo</a>
+      <a href="#laboratorios">Laboratorios</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+  </header>
+
+  <main id="contenido">
+    <!-- HERO DE MARCA -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <p class="eyebrow">tiendasecreta · tiendasecreta.com</p>
+
+        <h1 id="hero-title">
+          tiendasecreta
+          <span>Un catálogo para descubrir.</span>
+        </h1>
+
+        <p class="hero-text">
+          Productos naturales, suplementos y bebidas de diferentes
+          fabricantes, reunidos en un solo lugar. Explora nuestras
+          categorías y encuentra la presentación que buscas.
+        </p>
+
+        <a href="#catalogo" class="button">Explorar catálogo</a>
+      </div>
+
+      <div class="hero-product brand-visual" aria-label="Marca tiendasecreta">
+        <div class="glow" aria-hidden="true"></div>
+        <div class="brand-mark">
+          tiendasecreta
+          <span>Descubre el catálogo</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- CATEGORÍAS -->
+    <section
+      id="categorias"
+      class="catalogo-section"
+      aria-labelledby="categorias-title"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">EXPLORA</p>
+        <h2 id="categorias-title">Nuestras <span>categorías.</span></h2>
+        <p>
+          Encuentra productos por tipo, presentación o línea.
+          Selecciona una categoría para ver sus productos.
+        </p>
+      </div>
+
+      <div class="category-grid">
+        {categorias.map((categoria) => (
+          <a
+            class="category-card"
+            href={`#categoria-${categoria.slug}`}
+          >
+            <span class="category-name">{categoria.nombre}</span>
+            <span class="category-description">
+              {categoria.descripcion}
+            </span>
+            <span class="category-link">Explorar categoría ↗</span>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- CATÁLOGO -->
+    <section
+      id="catalogo"
+      class="catalogo-section"
+      aria-labelledby="catalogo-title"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">PRODUCTOS</p>
+        <h2 id="catalogo-title">El catálogo <span>tiendasecreta.</span></h2>
+        <p>
+          Consulta las presentaciones y los precios disponibles.
+          Cada producto conserva su propia página.
+        </p>
+      </div>
+
+      {categorias.map((categoria) => {
+        const productosCategoria = productosVisibles.filter(
+          (producto) => producto.categorias?.includes(categoria.slug)
+        );
+
+        return (
+          <section
+            id={`categoria-${categoria.slug}`}
+            class="catalog-category"
+            aria-labelledby={`titulo-${categoria.slug}`}
+          >
+            <div class="group-heading">
+              <h3 id={`titulo-${categoria.slug}`}>
+                {categoria.nombre}
+              </h3>
+              <p>{categoria.descripcion}</p>
+            </div>
+
+            {productosCategoria.length > 0 ? (
+              <div class="product-grid">
+                {productosCategoria.map((producto) => {
+                  const foto =
+                    producto.imagenes?.[0] ||
+                    producto.imagenesOriginales?.[0];
+
+                  return (
+                    <a
+                      class="tarjeta-catalogo"
+                      href={`/${producto.slug}`}
+                    >
+                      <div class="foto-catalogo">
+                        {foto ? (
+                          <img
+                            src={foto}
+                            alt={producto.nombre}
+                            loading="lazy"
+                            decoding="async"
+                          />
+                        ) : (
+                          <span>Fotografía pendiente</span>
+                        )}
+                      </div>
+
+                     {
+  laboratorios.find(
+    (laboratorio) => laboratorio.slug === producto.laboratorio
+  )?.nombre ?? "Fabricante por confirmar"
+}
+                      <h4>{producto.nombre}</h4>
+
+                      <span class="detalle">
+                        {producto.presentacion}
+                      </span>
+
+                      <span class="precio">
+                        {formatoPrecio(producto.precioDetal)}
+                      </span>
+                    </a>
+                  );
+                })}
+              </div>
+            ) : (
+              <p class="empty-category">
+                Estamos preparando los productos de esta categoría.
+              </p>
+            )}
+          </section>
+        );
+      })}
+    </section>
+
+    <!-- LABORATORIOS Y FABRICANTES -->
+    <section
+      id="laboratorios"
+      class="catalogo-section"
+      aria-labelledby="laboratorios-title"
+    >
+      <div class="section-heading">
+        <p class="eyebrow">NUESTROS FABRICANTES</p>
+        <h2 id="laboratorios-title">
+          Diferentes orígenes. <span>Un catálogo.</span>
+        </h2>
+        <p>
+          tiendasecreta reúne productos elaborados por diferentes
+          fabricantes y laboratorios.
+        </p>
+      </div>
+
+      <div class="laboratory-grid">
+        {laboratorios.map((laboratorio) => (
+          <article class="laboratory-card">
+            <h3>{laboratorio.nombre}</h3>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- CONTACTO -->
+    <section
+      id="contacto"
+      class="cta"
+      aria-labelledby="contacto-title"
+    >
+      <p class="eyebrow">tiendasecreta</p>
+
+      <h2 id="contacto-title">
+        ¿Buscas un producto?
+        <span>Estamos para ayudarte.</span>
+      </h2>
+
+      <p class="hero-text">
+        Consulta las presentaciones disponibles y solicita información
+        sobre tus productos de interés.
+      </p>
+
+      <a href="mailto:ventas@tiendasecreta.comm" class="button">
+        Contactar
+      </a>
+
+      <p class="social">
+        Síguenos en
+        <a
+          href={instagram}
+          rel="me noopener"
+          target="_blank"
+          aria-label="tiendasecreta en Instagram (@tiendasecretaco)"
+        >@tiendasecretaco</a>
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <span>© {new Date().getFullYear()} tiendasecreta</span>
+    <a href={instagram} rel="me noopener" target="_blank">
+      @tiendasecretaco
+    </a>
+    <a href="https://tiendasecreta.comm/">tiendasecreta.com</a>
+  </footer>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/sw.js").catch(() => {});
+      });
+    }
+
+    let deferredPrompt;
+    const installButton = document.querySelector("#install-pwa");
+
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      deferredPrompt = event;
+      if (installButton) installButton.hidden = false;
+    });
+
+    installButton?.addEventListener("click", async () => {
+      if (!deferredPrompt) return;
+
+      deferredPrompt.prompt();
+      await deferredPrompt.userChoice;
+
+      deferredPrompt = null;
+      installButton.hidden = true;
+    });
+
+    window.addEventListener("appinstalled", () => {
+      if (installButton) installButton.hidden = true;
+    });
+  </script>
+</body>
