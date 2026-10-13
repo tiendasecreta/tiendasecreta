@@ -5,12 +5,12 @@ import productos from "../data/productos.json";
 import "../styles/global.css";
 
 const siteUrl = "https://tiendasecreta.com/";
-const title = "tiendasecreta | Bebidas, productos naturales y suplementos";
+const title = "Tienda Secreta | Bebidas, productos naturales y suplementos";
 const description =
   "Descubre tiendasecreta, una marca comercial con bebidas, productos naturales y suplementos de diferentes fabricantes. Explora el catálogo y consulta las presentaciones disponibles.";
 
-const ogImage = `${siteUrl}images/og-tiendasecreta.jpg`;
-const instagram = "https://www.instagram.com/tiendasecretaco/";
+const ogImage = `${siteUrl}images/og-tienda-secreta.jpg`;
+const instagram = "https://www.instagram.com/tiendasecreta.co/";
 
 const productosVisibles = productos.filter(
   (producto) => producto.publicar !== false
@@ -37,17 +37,17 @@ const jsonLd = {
     {
       "@type": "Organization",
       "@id": `${siteUrl}#organization`,
-      name: "tiendasecreta",
+      name: "Tienda Secreta",
       url: siteUrl,
-      logo: `${siteUrl}icons/tiendasecreta-192.png`,
-      email: "ventas@tiendasecreta.comm",
+      logo: `${siteUrl}icons/tienda-secreta-192.png`,
+      email: "ventas@tiendasecreta.com",
       sameAs: [instagram],
     },
     {
       "@type": "WebSite",
       "@id": `${siteUrl}#website`,
       url: siteUrl,
-      name: "tiendasecreta",
+      name: "Tienda Secreta",
       description,
       inLanguage: "es-CO",
       publisher: { "@id": `${siteUrl}#organization` },
@@ -74,11 +74,11 @@ const jsonLd = {
     <link rel="sitemap" href="/sitemap-index.xml" />
 
     <link rel="manifest" href="/manifest.webmanifest" />
-    <link rel="icon" type="image/png" href="/icons/tiendasecreta-192.png" />
-    <link rel="apple-touch-icon" href="/icons/tiendasecreta-192.png" />
+    <link rel="icon" type="image/png" href="/icons/tienda-secreta-192.png" />
+    <link rel="apple-touch-icon" href="/icons/tienda-secreta-192.png" />
 
     <!-- Open Graph -->
-    <meta property="og:site_name" content="tiendasecreta" />
+    <meta property="og:site_name" content="Tienda Secreta" />
     <meta property="og:locale" content="es_CO" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content={siteUrl} />
@@ -101,7 +101,7 @@ const jsonLd = {
     <meta name="twitter:image" content={ogImage} />
     <meta
   name="twitter:image:alt"
-  content="tiendasecreta, marca comercial de productos naturales, suplementos y bebidas"
+  content="Tienda Secreta, Marca comercial de productos naturales, suplementos y bebidas"
 />
 
     <!-- Datos estructurados -->
@@ -113,7 +113,7 @@ const jsonLd = {
     <link
       rel="preload"
       as="image"
-      href="/images/envase-tiendasecreta-25ml.webp"
+      href="/images/tienda-secreta-30-ml.webp"
       type="image/webp"
     />
     <link
@@ -123,14 +123,14 @@ const jsonLd = {
   </head>
 
 <body>
-  <a href="#contenido" class="skip-link">Saltar al contenido</a>
+  <a href="#contenido" class="skip-link">saltar al contenido</a>
 
   <header class="navbar">
     <button id="install-pwa" class="install-button" hidden>
-      Instalar tiendasecreta
+      Instalar Tienda Secreta
     </button>
 
-    <a href="/" class="logo" aria-label="tiendasecreta, inicio">tiendasecreta</a>
+    <a href="/" class="logo" aria-label="Tienda Secreta, inicio">Tienda Secreta</a>
 
     <nav aria-label="Principal">
       <a href="#categorias">Categorías</a>
@@ -144,10 +144,10 @@ const jsonLd = {
     <!-- HERO DE MARCA -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-content">
-        <p class="eyebrow">tiendasecreta · tiendasecreta.com</p>
+        <p class="eyebrow">Tienda Secreta · tiendasecreta.com</p>
 
         <h1 id="hero-title">
-          tiendasecreta
+          Tienda Secreta
           <span>Un catálogo para descubrir.</span>
         </h1>
 
@@ -160,10 +160,10 @@ const jsonLd = {
         <a href="#catalogo" class="button">Explorar catálogo</a>
       </div>
 
-      <div class="hero-product brand-visual" aria-label="Marca tiendasecreta">
+      <div class="hero-product brand-visual" aria-label="Marca Tienda Secreta">
         <div class="glow" aria-hidden="true"></div>
         <div class="brand-mark">
-          tiendasecreta
+          Tienda Secreta
           <span>Descubre el catálogo</span>
         </div>
       </div>
@@ -208,7 +208,7 @@ const jsonLd = {
     >
       <div class="section-heading">
         <p class="eyebrow">PRODUCTOS</p>
-        <h2 id="catalogo-title">El catálogo <span>tiendasecreta.</span></h2>
+        <h2 id="catalogo-title">El catálogo <span>Tienda Secreta.</span></h2>
         <p>
           Consulta las presentaciones y los precios disponibles.
           Cada producto conserva su propia página.
